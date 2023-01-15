@@ -1,5 +1,6 @@
 package com.neff.service;
 
+import com.neff.exceptions.UserErrorException;
 import com.neff.model.Task;
 import com.neff.repo.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,11 @@ public class TaskService {
     }
 
     public Task getTaskById(int id) {
-        return taskRepository.findById(id).get();
+     Task task = new Task();
+        if(taskRepository.findById(id).isPresent()){
+            task = taskRepository.findById(id).get();
+        }
+        return task;
     }
 
     public void saveOrUpdate (Task task) {
@@ -30,7 +35,7 @@ public class TaskService {
 
     public void delete(int id) {
         if (getAllTasks().isEmpty()) {
-            return;
+            throw new UserErrorException("NO USER FOUND");
         } else {
             taskRepository.deleteById(id);
         }

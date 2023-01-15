@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -17,9 +16,6 @@ public class UserController {
 
     @Autowired
     UserService userService;
-
-    @Autowired
-    TaskController taskController;
 
     @GetMapping(value = "/api/users", consumes = {"*/*"})
     public List<User> getAllUsers () {
@@ -39,7 +35,6 @@ public class UserController {
     @PostMapping(value = "/api/users", consumes = {"*/*"})
     public void saveUser (@RequestBody User user){
         userService.saveOrUpdate(user);
-        //return user.getId();
     }
 
     @ExceptionHandler
