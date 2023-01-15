@@ -23,11 +23,7 @@ public class UserController {
 
     @GetMapping(value = "/api/users", consumes = {"*/*"})
     public List<User> getAllUsers () {
-        try {
             return userService.getAllUsers();
-        } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-        }
     }
 
     @GetMapping(value = "/api/users/{id}", consumes = {"*/*"})

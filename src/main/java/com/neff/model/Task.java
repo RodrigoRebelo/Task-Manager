@@ -5,16 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name = "TASK")
-public class Task {
-
-    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private int systemID;
-
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private int id;
+public class Task extends AbstractModel{
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
     private User user;
 
     @Column(name = "TASK")
@@ -23,22 +16,6 @@ public class Task {
     @Autowired
     @Column(name = "PRIORITY")
     private TaskPriority priority;
-
-    public int getSystemID() {
-        return systemID;
-    }
-
-    public void setSystemID(int systemID) {
-        this.systemID = systemID;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getTask() {
         return task;

@@ -1,6 +1,7 @@
 package com.neff.service;
 
 import com.neff.exceptions.UserErrorException;
+import com.neff.model.Task;
 import com.neff.model.User;
 import com.neff.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,14 @@ public class UserService {
             throw new UserErrorException("USER NOT FOUND");
         }
         userRepository.deleteById(id);
+    }
+
+    public Task addTask(int id, Task task) {
+
+        User user = getUserById(id);
+        user.addTask(task);
+        return task;
+
     }
 
 }

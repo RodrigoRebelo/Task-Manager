@@ -34,10 +34,9 @@ public class TaskController {
     }
 
         @PostMapping(value = "/api/users/{userId}/tasks", consumes = {"*/*"})
-        public String saveTask (@PathVariable("userId") int userId, @RequestBody Task task) {
-            userService.getUserById(userId);
-            taskService.saveOrUpdate(task);
-            return "task added";
+        public void saveTask (@PathVariable("userId") int userId, @RequestBody Task taskBody) {
 
+            userService.getUserById(userId);
+            taskService.saveOrUpdate(userService.addTask(userId, taskBody));
         }
 }

@@ -1,28 +1,17 @@
 package com.neff.model;
 
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
 @Table(name = "USERS")
-public class User {
-
-    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private int id;
+public class User extends AbstractModel{
 
     @Column(name = "PASSWORD")
     private String password;
 
     @OneToMany(mappedBy = "user")
     private List<Task> tasks;
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getPassword() {
         return password;
@@ -30,5 +19,10 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void addTask(Task task) {
+        tasks.add(task);
+        task.setUser(this);
     }
 }
