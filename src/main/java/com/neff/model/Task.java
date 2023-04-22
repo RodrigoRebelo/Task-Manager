@@ -14,8 +14,12 @@ public class Task extends AbstractModel{
     private String task;
 
     @Autowired
-    @Column(name = "PRIORITY")
-    private TaskPriority priority;
+    @Column(name = "TASK_PRIORITY")
+    private TaskPriorityEnum taskPriority;
+
+    @Autowired
+    @Column
+    private TaskStatusEnum taskStatus;
 
     public String getTask() {
         return task;
@@ -25,12 +29,12 @@ public class Task extends AbstractModel{
         this.task = task;
     }
 
-    public TaskPriority getPriority() {
-        return priority;
+    public TaskPriorityEnum getPriority() {
+        return taskPriority;
     }
 
-    public void setPriority(TaskPriority priority) {
-        this.priority = priority;
+    public void setPriority(TaskPriorityEnum taskPriority) {
+        this.taskPriority = taskPriority;
     }
 
     public User getUser() {

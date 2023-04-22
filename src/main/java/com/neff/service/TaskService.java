@@ -1,5 +1,6 @@
 package com.neff.service;
 
+import com.neff.exceptions.TaskErrorException;
 import com.neff.exceptions.UserErrorException;
 import com.neff.model.Task;
 import com.neff.repo.TaskRepository;
@@ -41,4 +42,11 @@ public class TaskService {
         }
     }
 
+    public List<Task> getAllTasksByUser(String user) {
+        List<Task> tasks = taskRepository.findByUser(user);
+        if (tasks.isEmpty()) {
+            throw new TaskErrorException("TASKS NOT FOUND");
+        }
+        return tasks;
+    }
 }

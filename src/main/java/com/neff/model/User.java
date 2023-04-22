@@ -7,6 +7,9 @@ import java.util.List;
 @Table(name = "USERS")
 public class User extends AbstractModel{
 
+    @Column(name = "USERNAME")
+    private String username;
+
     @Column(name = "PASSWORD")
     private String password;
 
@@ -19,6 +22,14 @@ public class User extends AbstractModel{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void addTask(Task task) {
