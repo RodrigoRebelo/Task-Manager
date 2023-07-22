@@ -24,8 +24,8 @@ public class TaskController {
     }
 
     @GetMapping(value = "/api/tasks/{userId}/tasks/{taskId}", consumes = {"*/*"})
-    public void getTask ( @PathVariable("userId") int userId, @PathVariable("taskId") int taskId){
-        //return taskService.getTaskById(taskId);
+    public Task getTask ( @PathVariable("userId") int userId, @PathVariable("taskId") int taskId){
+        return taskService.getTaskById(taskId);
     }
 
     @DeleteMapping(value = "/api/tasks/{id}", consumes = {"*/*"})
@@ -33,10 +33,11 @@ public class TaskController {
         taskService.delete(id);
     }
 
-    @PostMapping(value = "/api/users/{userId}/tasks", consumes = {"*/*"})
-    public void saveTask (@PathVariable("userId") int userId, @RequestBody Task taskBody) {
+    //@PostMapping(value = "/api/users/{userId}/{taskListId}", consumes = {"*/*"})
+/*    public void saveTask (@PathVariable("userId") int userId, @PathVariable("taskListId") int taskListId, @RequestBody Task taskBody) {
 
         userService.getUserById(userId);
+
         taskService.saveOrUpdate(userService.addTask(userId, taskBody));
-    }
+    }*/
 }

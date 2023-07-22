@@ -5,10 +5,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name = "TASK")
-public class Task extends AbstractModel{
+public class Task {
 
-    @ManyToOne
-    private User user;
+    @Id
+    @GeneratedValue ( strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @OneToOne
+    private TaskList taskList;
 
     @Column(name = "TASK")
     private String task;
@@ -20,6 +24,14 @@ public class Task extends AbstractModel{
     @Autowired
     @Column
     private TaskStatusEnum taskStatus;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTask() {
         return task;
@@ -35,13 +47,5 @@ public class Task extends AbstractModel{
 
     public void setPriority(TaskPriorityEnum taskPriority) {
         this.taskPriority = taskPriority;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }
