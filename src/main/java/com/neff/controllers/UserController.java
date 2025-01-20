@@ -1,4 +1,4 @@
-package com.neff.controller;
+package com.neff.controllers;
 
 import com.neff.exceptions.ErrorObject;
 import com.neff.exceptions.UserErrorException;

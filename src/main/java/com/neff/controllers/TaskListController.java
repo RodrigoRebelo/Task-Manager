@@ -1,4 +1,4 @@
-package com.neff.controller;
+package com.neff.controllers;
 
 import com.neff.model.TaskList;
 import com.neff.service.TaskListService;
